@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label {
+            display: flex;
+            gap: 10px;
+        }
+
+        h1 {
+            justify-content: space-around;
+            align-items: center;
+            display: flex;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to my game it's reda senpai</h1>
+    <form >
+        <label for="choose">
+            <h2>Choose a number between 1 to 100 :</h2>
+            <input id="choose" type="number">
+            <button id="btn" onclick="doo()" type="button">Submit</button>
+        </label>
+        <label for="result">
+            <h3>Result : </h3>
+            <h5 id="result"></h5><br>
+            <h5 id="display"></h5>
+        </label>
+        <button type="reset" onclick="reset()">Reset</button>
+    </form>
+<script>
+        var nums = Math.floor(Math.random() * 100) + 1;
+        var att = 0;
+
+        function doo() {
+            att++;
+            let num = parseInt(document.getElementById('choose').value);
+
+            if (num == nums) {
+                document.getElementById('result').innerHTML = `You got it in ${att} attempts`;
+
+                if (att == 1) {
+                    document.getElementById('display').innerHTML = `You are a cheater, do not play this game again!!`;
+                } else if (att >= 2 && att <= 5) {
+                    document.getElementById('display').innerHTML = `You got it in ${att} attempts.`;
+                } else if (att >= 6 && att <= 9) {
+                    document.getElementById('display').innerHTML = `${att} attempts - Not Bad!`;
+                } else {
+                    document.getElementById('display').innerHTML = `It took exactly 10 attempts. lucky &#1F60F`;
+                }
+            } else {
+                if (num < nums) {
+                    document.getElementById('result').innerHTML = "Try again, the number is bigger";
+                } else {
+                    document.getElementById('result').innerHTML = "Try again, the number is smaller";
+                }
+                if (att == 10) {
+                    document.getElementById('result').innerHTML = 'Loser';
+                    document.getElementById('display').innerHTML = `the number is ${nums}`;
+                    document.getElementById('btn').disabled = true;
+                }
+            }
+            function reset() {
+                document.getElementById('btn').enable = true;
+            }
+        }
+            doo();
+
+        </script>
+</body>
+</html>

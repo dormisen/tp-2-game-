@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Interaction</title>
+</head>
+<body>
+
+<script>
+    //   choosing a number until it is less than or equal to 100
+    let number = Number(prompt("Please enter a number: "));
+    while (number > 100 || number < 0 ) {
+        number = Number(prompt("The number must be less than or equal to 100. Please enter again:"));
+    }
+        alert("You have entered a number less than or equal to 100. it is : " + number);
+
+
+    
+
+    //choosing a number between 50 and 100
+    let num = Number(prompt("Please enter a number between 50 and 100:"));
+
+    while (num < 50 || num > 100) {
+        num = Number(prompt("The number must be between 50 and 100. Please enter again: "));
+    }
+
+    alert("You have entered a number between 50 and 100. it is : " + num);
+
+
+    //script to input student grades
+    let grades = [];
+    let grade = Number(prompt("Please enter a grade : "));
+
+    while (grade !== -1) {
+        if (grade >= 0 && grade <= 20) {
+            grades.push(grade);
+            grade = Number(prompt("Enter another grade : "));
+        } else {
+            alert("The grade must be between 0 and 20. Please enter again.");
+        }
+    }
+
+    if (grades.length > 0) { 
+        let sum = grades.reduce((acc, curr) => acc + curr,); 
+        let avrg = sum / grades.length;
+        let maxGrade = Math.max(...grades);
+
+        alert(`\nSum of grades: ${sum}\nAverage grade: ${avrg.toFixed(2)}\nMaximum grade: ${maxGrade}\nNumber of grades: ${grades.length}`);
+    } else {
+        alert("No valid grades entered.");
+    }
+</script>
+
+</body>
+</html>
